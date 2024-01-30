@@ -1,20 +1,28 @@
 import { Injectable } from '@nestjs/common';
+import { TodoModel } from './todo.model';
+import { ModelType } from '@typegoose/typegoose/lib/types';
+import { InjectModel } from 'nestjs-typegoose';
+import { CreateTodoDto } from './dto/create-todo.dto';
 
 @Injectable()
 export class TodoService {
+  constructor(
+    @InjectModel(TodoModel) private readonly todoModel: ModelType<TodoModel>,
+  ) {}
+
   async get() {
-    return 'Todo List';
+    return this.todoModel.find();
   }
 
-  async create() {
-    return 'Create';
+  async create(dto: CreateTodoDto) {
+    return this.todoModel.create(dto);
   }
 
-  async updateById() {
-    return 'update';
+  async updateById(id: string, dto: CreateTodoDto) {
+    return this.todoModel.findByIdAndUpdate(id, dto, { new: true }).exec();
   }
 
-  async deleteById() {
-    return 'Delete';
+  async deleteById(id: string) {
+    return this.todoModel.findByIdAndDelete(id).exec();
   }
 }
