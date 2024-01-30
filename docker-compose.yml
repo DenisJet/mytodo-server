@@ -1,0 +1,10 @@
+version: '3'
+services:
+  top.api:
+    image: ghcr.io/denisjet/mytodo-server/mytodo-server:latest
+    container_name: mytop-api
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./.env:/mytodo-server/.env
