@@ -2,7 +2,7 @@ version: '3'
 services:
   top.api:
     image: ghcr.io/denisjet/mytodo-server/mytodo-server:latest
-    container_name: mytop-api
+    container_name: mytodo-server
     restart: always
     ports:
       - 3000:3000
