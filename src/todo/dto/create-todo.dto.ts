@@ -8,5 +8,5 @@ export class CreateTodoDto {
   description?: string;
 
   @IsString()
-  state: string;
+  isDone: boolean;
 }

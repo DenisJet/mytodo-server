@@ -1,7 +1,7 @@
 import { prop } from '@typegoose/typegoose';
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-type state = 'awaits';
+type isDone = false;
 
 export interface TodoModel extends Base {}
 export class TodoModel extends TimeStamps {
@@ -12,5 +12,5 @@ export class TodoModel extends TimeStamps {
   description: string;
 
   @prop()
-  state: state;
+  isDone: isDone;
 }
