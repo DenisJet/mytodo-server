@@ -25,6 +25,15 @@ export class TodoController {
     return this.todoService.get();
   }
 
+  @Get(':id')
+  async findById(@Param('id') id: string) {
+    const todo = await this.todoService.findById(id);
+    if (!todo) {
+      throw new NotFoundException(TODO_NOT_FOUND_ERROR);
+    }
+    return todo;
+  }
+
   @Post('create')
   async create(@Body() dto: CreateTodoDto) {
     return this.todoService.create(dto);

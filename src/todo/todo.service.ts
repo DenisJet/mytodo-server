@@ -14,6 +14,10 @@ export class TodoService {
     return this.todoModel.find();
   }
 
+  async findById(id: string) {
+    return this.todoModel.findById(id).exec();
+  }
+
   async create(dto: CreateTodoDto) {
     return this.todoModel.create(dto);
   }
